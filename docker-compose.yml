@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: fskcb-app
+    ports:
+      - "8092:8092"
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - SERVER_PORT=8092
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3307/SpringDB
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+      - APP_JWT_SECRET=mySecretKeyForJWTTokenGenerationThatShouldBeLongAndSecure123456789
+      - APP_JWT_EXPIRATION_MILLISECONDS=604800000
+    volumes:
+      - app-logs:/app/logs
+      - app-uploads:/app/upload
+    restart: unless-stopped
+
+volumes:
+  app-logs:
+  app-uploads:

@@ -1,0 +1,3 @@
+app:
+  jwt-secret: jnvbvjnbyjjnbhnbjfkbkgnjndvgbvjgmifjbvnkmj
+  jwt-expiration-milliseconds: 3600000
